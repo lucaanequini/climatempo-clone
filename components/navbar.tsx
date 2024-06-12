@@ -10,14 +10,20 @@ import useVariables from "@/hooks/use-variables"
 
 
 import { Skeleton } from "./ui/skeleton";
+import { useLocation } from "@/hooks/use-location"
 
 export const Navbar = () => {
-    const { cityName, weatherData, isLoading } = useVariables()
+    const { cityName, weatherData, isLoading, getLocationWeatherData } = useVariables()
+    const { position } = useLocation()
+
+    useEffect(() => {
+        getLocationWeatherData(position)
+    }, [position])
 
     return (
         <>
             <div className="w-full bg-blue-600 py-10">
-                <div className='mx-2 lg:mx-40 xl:mx-60 2xl:mx-96 flex justify-between items-center'>
+                <div className='mx-2 lg:mx-16 xl:mx-48 2xl:mx-80 flex justify-between items-center'>
                     <div className="w-32 lg:w-40">
                         <Image src='/logo.svg' alt='logo' layout='responsive' width={150} height={400} />
                     </div>

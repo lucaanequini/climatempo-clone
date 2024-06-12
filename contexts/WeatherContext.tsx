@@ -2,29 +2,34 @@
 
 import React, { createContext, useState, useEffect } from "react"
 
-import { useLocation } from "@/hooks/use-location"
 import weatherService from "@/services/weather"
 import geolocationService from "@/services/geolocation"
 
 interface WeatherContextProps {
     weatherData: any | null
+    searchWeatherData: any | null
     cityName: any | null
     isLoading: boolean
+    getLocationWeatherData: (position: GeolocationPosition | null) => void
+    getCityNameWeatherData: (cityName: string | undefined) => void
 }
 
 export const WeatherContext = createContext<WeatherContextProps>({
     weatherData: null,
+    searchWeatherData: null,
     cityName: null,
-    isLoading: false
+    isLoading: false,
+    getLocationWeatherData: () => { },
+    getCityNameWeatherData: () => { },
 })
 
 export const WeatherContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [weatherData, setWeatherData] = useState<any>(null);
+    const [searchWeatherData, setSearchWeatherData] = useState<any>(null)
     const [cityName, setCityName] = useState<any>(null)
     const [isLoading, setIsLoading] = useState(false)
-    const { position } = useLocation()
 
-    useEffect(() => {
+    const getLocationWeatherData = async (position: GeolocationPosition | null) => {
         setIsLoading(true)
         if (position) {
             weatherService.getCurrentWeather(position.coords.latitude, position.coords.longitude)
@@ -37,12 +42,29 @@ export const WeatherContextProvider = ({ children }: { children: React.ReactNode
                 })
                 .catch((error) => console.error('Erro ao obter cidade:', error))
         }
-    }, [position]);
+    }
+
+    const getCityNameWeatherData = async (city: string | undefined) => {
+        setIsLoading(true)
+        try {
+            const { lat, lon } = await geolocationService.getLonAndLat(city);
+            const cityWeatherData = await weatherService.getCurrentWeather(lat, lon);
+            setSearchWeatherData(cityWeatherData);
+            setIsLoading(false)
+            return cityWeatherData;
+        } catch (error) {
+            console.error('Erro ao obter dados do clima da cidade:', error);
+            throw error;
+        }
+    }
 
     const providerItems = {
         weatherData,
+        searchWeatherData,
         cityName,
-        isLoading
+        isLoading,
+        getLocationWeatherData,
+        getCityNameWeatherData
     }
 
     return (
