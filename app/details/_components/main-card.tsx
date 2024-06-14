@@ -10,28 +10,30 @@ import Image from "next/image"
 
 export const MainCard = () => {
     const pathname = usePathname()
-    const cityId = pathname.split('/').pop()?.split('-').shift()?.replace('%20', '-')
+    const cityId = pathname.split('/').pop()?.split('_').shift()
+    const country = pathname.split('/').pop()?.split('_').pop()
+    const searchCity = pathname.split('/').pop()?.split('_').shift()?.split('-').join(' ')
     const { getCityNameWeatherData, cityName, isLoading, searchWeatherData } = useVariables()
 
     const today = new Date()
 
     useEffect(() => {
-        getCityNameWeatherData(cityId)
+        getCityNameWeatherData(cityId, country)
     }, [pathname])
 
     return (
-        <div className="w-2/3 bg-gray-100 p-5 rounded-xl">
+        <div className="w-full mt-10 md:mt-0 md:w-2/3 bg-gray-100 p-5 rounded-xl">
             {cityName && searchWeatherData && !isLoading && (
                 <div className="flex flex-col gap-y-5">
                     <div className="flex items-center gap-x-2">
                         <p className="font-semibold text-blue-600 text-xl">
-                            Previsão para Hoje {today.toLocaleDateString('pt-BR')} - {cityName.name}
+                            Previsão para Hoje {today.toLocaleDateString('pt-BR')} - {searchCity}
                         </p>
                         <MapPin className="w-6 h-6 text-blue-600" />
                     </div>
-                    <div className="flex gap-x-5">
+                    <div className="flex flex-col sm:flex-row gap-y-10 gap-x-10 lg:gap-x-40 items-center">
                         <div className="flex flex-col gap-y-5">
-                            <div className="flex gap-x-10">
+                            <div className="flex flex-col sm:flex-row gap-10">
                                 <div className="flex items-center gap-x-2">
                                     <ArrowDown className="h-14 w-14 text-red-500" />
                                     <p className="font-semibold text-5xl text-gray-600">{(searchWeatherData.daily[0].temp.min - 273.15).toFixed(0)}°</p>

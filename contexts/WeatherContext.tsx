@@ -11,7 +11,7 @@ interface WeatherContextProps {
     cityName: any | null
     isLoading: boolean
     getLocationWeatherData: (position: GeolocationPosition | null) => void
-    getCityNameWeatherData: (cityName: string | undefined) => void
+    getCityNameWeatherData: (cityName: string | undefined, country: string | undefined) => void
 }
 
 export const WeatherContext = createContext<WeatherContextProps>({
@@ -44,14 +44,19 @@ export const WeatherContextProvider = ({ children }: { children: React.ReactNode
         }
     }
 
-    const getCityNameWeatherData = async (city: string | undefined) => {
+    const getCityNameWeatherData = async (city: string | undefined, country: string | undefined) => {
         setIsLoading(true)
         try {
-            const { lat, lon } = await geolocationService.getLonAndLat(city);
-            const cityWeatherData = await weatherService.getCurrentWeather(lat, lon);
-            setSearchWeatherData(cityWeatherData);
-            setIsLoading(false)
-            return cityWeatherData;
+            const response = await geolocationService.getLonAndLat(city, country);
+            if (response) {
+                const lat = response.lat
+                const lon = response.lon
+                const cityWeatherData = await weatherService.getCurrentWeather(lat, lon);
+                setSearchWeatherData(cityWeatherData);
+                setIsLoading(false)
+                console.log(cityWeatherData)
+                return cityWeatherData;
+            }
         } catch (error) {
             console.error('Erro ao obter dados do clima da cidade:', error);
             throw error;

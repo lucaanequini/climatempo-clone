@@ -12,6 +12,8 @@ import useVariables from "@/hooks/use-variables"
 import { Skeleton } from "./ui/skeleton";
 import { useLocation } from "@/hooks/use-location"
 
+import { SearchItem } from "./search"
+
 export const Navbar = () => {
     const { cityName, weatherData, isLoading, getLocationWeatherData } = useVariables()
     const { position } = useLocation()
@@ -27,6 +29,7 @@ export const Navbar = () => {
                     <div className="w-32 lg:w-40">
                         <Image src='/logo.svg' alt='logo' layout='responsive' width={150} height={400} />
                     </div>
+                    <SearchItem />
                     <Button variant='default' className="bg-transparent border border-white" >Faça seu Login</Button>
                 </div>
             </div>

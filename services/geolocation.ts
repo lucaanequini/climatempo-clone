@@ -8,19 +8,17 @@ const geolocationService = {
             const response = await axios.get(
                 `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${API_KEY}`
             );
-            console.log(response.data[0]);
             return response.data[0];
         } catch (error) {
             console.error('Erro ao obter cidade:', error);
             throw error;
         }
     },
-    getLonAndLat: async (city: string | undefined) => {
+    getLonAndLat: async (city: string | undefined, country: string | undefined) => {
         try {
             const response = await axios.get(
-                `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API_KEY}`
+                `http://api.openweathermap.org/geo/1.0/direct?q=${city}&=country?q=${country}&=limit=1&appid=${API_KEY}`
             );
-            console.log(response.data[0]);
             return response.data[0];
         } catch (error) {
             console.error('Erro ao obter informações:', error);
