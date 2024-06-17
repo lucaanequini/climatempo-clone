@@ -1,21 +1,16 @@
 'use client'
 
 import React, { useState } from 'react';
-import axios from 'axios';
 
 import { useRouter } from 'next/navigation';
-
-import { SearchIcon } from 'lucide-react';
 
 import geolocationService from '@/services/geolocation';
 
 interface City {
     id: number;
     name: string;
+    state: string;
     country: string;
-    local_names: {
-        io: string;
-    };
 }
 
 export const useSearch = () => {
@@ -33,13 +28,14 @@ export const useSearch = () => {
     };
 
     const handleSuggestionClick = (suggestion: City) => {
-        router.push(`/details/${suggestion.name}_${suggestion.country}`)
+        router.push(`/details/today/${suggestion.name}_${suggestion.state}_${suggestion.country}`)
         setSuggestions([]);
         setSearchTerm('')
     };
 
     const fetchSuggestions = async (searchTerm: string) => {
         try {
+            console.log(searchTerm)
             await geolocationService.getSuggestions(searchTerm)
                 .then(response => setSuggestions(response))
                 .catch(error => console.error('Erro ao buscar sugestões:', error));

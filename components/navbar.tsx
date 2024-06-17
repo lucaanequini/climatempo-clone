@@ -12,6 +12,8 @@ import { useLocation } from "@/hooks/use-location"
 
 import { SearchItem } from "./search"
 
+import Link from "next/link";
+
 export const Navbar = () => {
     const { cityName, weatherData, isLoading, getLocationWeatherData } = useVariables()
     const { position } = useLocation()
@@ -24,9 +26,11 @@ export const Navbar = () => {
         <>
             <div className="w-full bg-blue-600 py-10">
                 <div className='mx-2 lg:mx-16 xl:mx-48 2xl:mx-80 flex justify-between items-center'>
-                    <div className="w-32 lg:w-40">
-                        <Image src='/logo.svg' alt='logo' layout='responsive' width={150} height={400} />
-                    </div>
+                    <Link href='/'>
+                        <div className="w-32 lg:w-40">
+                            <Image src='/logo.svg' alt='logo' layout='responsive' width={150} height={400} />
+                        </div>
+                    </Link>
                     <SearchItem />
                 </div>
             </div>

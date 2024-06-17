@@ -12,7 +12,7 @@ interface DailyCardProps {
 
 export const DailyCard = ({ image, min, max, pop, weekDay }: DailyCardProps) => {
     return (
-        <div className="w-full bg-gray-100 flex pr-5 sm:p-5 rounded-xl">
+        <div className="w-full bg-white flex pr-5 sm:p-5 rounded-xl">
             <div className="-ml-5 w-40">
                 <div className="flex flex-col items-center">
                     <p className="font-semibold">{weekDay}</p>

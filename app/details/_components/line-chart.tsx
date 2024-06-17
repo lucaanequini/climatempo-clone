@@ -15,7 +15,7 @@ import {
     Tooltip,
     Filler
 } from "chart.js"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 ChartJS.register(
     LineElement,
@@ -27,28 +27,46 @@ ChartJS.register(
     Filler
 )
 
-export const LineChart = () => {
+interface LineChartProps {
+    day: number
+}
+
+export const LineChart = ({ day }: LineChartProps) => {
     const pathname = usePathname()
     const cityId = pathname.split('/').pop()?.split('-').shift()?.replace('%20', '-')
+    const state = pathname.split('/').pop()?.split('_')[1]
     const country = pathname.split('/').pop()?.split('-').pop()
     const { getCityNameWeatherData, searchWeatherData } = useVariables()
 
+    const currentHour = new Date().getHours();
+    const dif = 24 - currentHour
+
+    const [startHour, setStartHour] = useState(0)
+    const [endHour, setEndHour] = useState(20)
+
     useEffect(() => {
-        getCityNameWeatherData(cityId, country)
+        getCityNameWeatherData(cityId, state, country)
+    }, [cityId, state, country])
+
+    useEffect(() => {
+        if (day === 1) {
+            setStartHour(dif)
+            setEndHour(dif + 20)
+            console.log(startHour, endHour)
+        }
     }, [])
 
     const generateHourLabels = () => {
-        const currentHour = new Date().getHours();
         const labels = [];
         for (let i = 0; i < 20; i++) {
-            const hour = (currentHour + i) % 24;
+            const hour = (currentHour + (day * dif) + i) % 24;
             labels.push(`${hour}h`);
         }
         return labels;
     }
 
     if (searchWeatherData === null) {
-        return <div>Carregando...</div>
+        return
     }
 
     const data = {
@@ -56,7 +74,7 @@ export const LineChart = () => {
         datasets: [
             {
                 label: 'Temperatura',
-                data: searchWeatherData.hourly.slice(0, 20).map((hour: any) => (hour.temp - 273.15).toFixed(0)),
+                data: searchWeatherData.hourly.slice(startHour, endHour).map((hour: any) => (hour.temp - 273.15).toFixed(0)),
                 fill: true,
                 pointBackgroundColor: 'white',
                 backgroundColor: 'rgba(255, 165, 0, 0.2)',
@@ -92,7 +110,7 @@ export const LineChart = () => {
     }
 
     return (
-        <div className="mt-5 flex flex-col gap-y-5 bg-gray-100 rounded-xl md:w-2/3 p-5">
+        <div className="mt-5 flex flex-col gap-y-5 bg-white rounded-xl md:w-2/3 p-5">
             <div className="pl-4">
                 <p className="font-semibold text-lg">Clima e previsão do tempo hora a hora</p>
                 <p className="text-gray-500">

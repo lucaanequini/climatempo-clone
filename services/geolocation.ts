@@ -14,11 +14,12 @@ const geolocationService = {
             throw error;
         }
     },
-    getLonAndLat: async (city: string | undefined, country: string | undefined) => {
+    getLonAndLat: async (city: string | undefined, state: string | undefined, country: string | undefined) => {
         try {
             const response = await axios.get(
-                `http://api.openweathermap.org/geo/1.0/direct?q=${city}&=country?q=${country}&limit=1&appid=${API_KEY}`
+                `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=0&appid=${API_KEY}`
             );
+            console.log(response.data[0])
             return response.data[0];
         } catch (error) {
             console.error('Erro ao obter informações:', error);

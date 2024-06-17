@@ -1,3 +1,5 @@
+import { BrowserRouter } from "react-router-dom"
+
 const DetailsLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>

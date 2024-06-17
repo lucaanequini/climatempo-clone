@@ -12,7 +12,7 @@ interface WeatherContextProps {
     detailsCityName: any | null
     isLoading: boolean
     getLocationWeatherData: (position: GeolocationPosition | null) => void
-    getCityNameWeatherData: (cityName: string | undefined, country: string | undefined) => void
+    getCityNameWeatherData: (cityName: string | undefined, state: string | undefined, country: string | undefined) => void
 }
 
 export const WeatherContext = createContext<WeatherContextProps>({
@@ -47,10 +47,10 @@ export const WeatherContextProvider = ({ children }: { children: React.ReactNode
         }
     }
 
-    const getCityNameWeatherData = async (city: string | undefined, country: string | undefined) => {
+    const getCityNameWeatherData = async (city: string | undefined, state: string | undefined, country: string | undefined) => {
         setIsLoading(true)
         try {
-            const response = await geolocationService.getLonAndLat(city, country);
+            const response = await geolocationService.getLonAndLat(city, state, country);
             if (response) {
                 const lat = response.lat
                 const lon = response.lon

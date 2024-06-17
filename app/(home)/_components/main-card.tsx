@@ -20,7 +20,7 @@ export const MainCard = () => {
     const { position } = useLocation()
 
     const onRedirect = () => {
-        router.push(`/details/${cityName.name}_${cityName.country}`)
+        router.push(`/details/today/${cityName.name}_${cityName.state}_${cityName.country}`)
     }
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export const MainCard = () => {
     }, [position])
 
     return (
-        <div className="bg-gray-100 py-14 px-5 md:px-14 rounded-xl flex flex-col items-center h-[470px] w-full sm:w-[500px]">
+        <div className="bg-white h-[470px] w-full sm:w-[500px] flex flex-col items-center py-14 px-5 md:px-14 rounded-xl">
             {cityName && weatherData && !isLoading && (
                 <>
                     <p className="text-lg font-semibold text-center">Tempo agora em: {cityName.name}, {cityName.state}</p>
