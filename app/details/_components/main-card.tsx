@@ -12,8 +12,7 @@ export const MainCard = () => {
     const pathname = usePathname()
     const cityId = pathname.split('/').pop()?.split('_').shift()
     const country = pathname.split('/').pop()?.split('_').pop()
-    const searchCity = pathname.split('/').pop()?.split('_').shift()?.split('-').join(' ')
-    const { getCityNameWeatherData, cityName, isLoading, searchWeatherData } = useVariables()
+    const { getCityNameWeatherData, cityName, isLoading, searchWeatherData, detailsCityName } = useVariables()
 
     const today = new Date()
 
@@ -27,7 +26,7 @@ export const MainCard = () => {
                 <div className="flex flex-col gap-y-5">
                     <div className="flex items-center gap-x-2">
                         <p className="font-semibold text-blue-600 text-xl">
-                            Previsão para Hoje {today.toLocaleDateString('pt-BR')} - {searchCity}
+                            Previsão para Hoje {today.toLocaleDateString('pt-BR')} - {detailsCityName}
                         </p>
                         <MapPin className="w-6 h-6 text-blue-600" />
                     </div>

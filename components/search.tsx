@@ -60,10 +60,10 @@ export const SearchItem: React.FC = () => {
                     placeholder="Digite sua cidade"
                     value={search.searchTerm}
                     onChange={search.handleInputChange}
-                    className='w-[800px] border border-white bg-transparent p-2 text-white rounded-xl'
+                    className='w-[100px] sm:w-[400px] xl:w-[600px] border border-white bg-transparent p-2 text-white rounded-xl'
                 />
             </div>
-            <ul className='absolute w-[800px] ml-10 mt-3 bg-white rounded-md shadow-md z-10 flex items-center flex-col'>
+            <ul className='absolute w-[140px] sm:w-[400px] xl:w-[600px] xl:ml-10 mt-3 bg-white rounded-md shadow-md z-10 flex items-center flex-col'>
                 {search.suggestions.map((suggestion) => (
                     <li
                         key={suggestion.id}

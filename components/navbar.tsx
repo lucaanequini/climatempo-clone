@@ -1,15 +1,13 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 
 import Image from "next/image"
 
-import { Button } from "./ui/button"
-
 import useVariables from "@/hooks/use-variables"
 
-
 import { Skeleton } from "./ui/skeleton";
+
 import { useLocation } from "@/hooks/use-location"
 
 import { SearchItem } from "./search"
@@ -30,7 +28,6 @@ export const Navbar = () => {
                         <Image src='/logo.svg' alt='logo' layout='responsive' width={150} height={400} />
                     </div>
                     <SearchItem />
-                    <Button variant='default' className="bg-transparent border border-white" >Faça seu Login</Button>
                 </div>
             </div>
             <div className="w-full bg-blue-900 h-[100px] flex items-center">
