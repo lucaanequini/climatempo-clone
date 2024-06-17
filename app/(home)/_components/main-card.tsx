@@ -19,10 +19,8 @@ export const MainCard = () => {
     const router = useRouter()
     const { position } = useLocation()
 
-    // const cityId = cityName.local_names.io.replace(' ', '')
-
     const onRedirect = () => {
-        router.push(`/details/${cityName.local_names.io.replace(' ', '-')}_${cityName.country}`)
+        router.push(`/details/${cityName.name}_${cityName.country}`)
     }
 
     useEffect(() => {

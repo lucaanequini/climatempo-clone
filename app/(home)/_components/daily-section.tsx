@@ -8,7 +8,7 @@ export const DailySection = () => {
     const { weatherData, cityName, isLoading } = useVariables()
 
 
-    const weekDays = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']
+    const weekDays = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo', 'Segunda']
     const today = new Date()
 
     return (

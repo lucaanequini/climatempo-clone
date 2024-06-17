@@ -30,10 +30,11 @@ ChartJS.register(
 export const LineChart = () => {
     const pathname = usePathname()
     const cityId = pathname.split('/').pop()?.split('-').shift()?.replace('%20', '-')
+    const country = pathname.split('/').pop()?.split('-').pop()
     const { getCityNameWeatherData, searchWeatherData } = useVariables()
 
     useEffect(() => {
-        getCityNameWeatherData(cityId)
+        getCityNameWeatherData(cityId, country)
     }, [])
 
     const generateHourLabels = () => {

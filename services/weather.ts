@@ -7,7 +7,7 @@ const weatherService = {
     getCurrentWeather: async (lat: Number, lon: Number) => {
         try {
             const response = await axios.get(
-                `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+                `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`
             );
             return(response.data)
         } catch (error) {
