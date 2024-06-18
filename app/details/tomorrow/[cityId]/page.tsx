@@ -2,7 +2,7 @@ import { MiniNavbar } from "../../_components/mini-navbar"
 import { MainCard } from "../../_components/main-card"
 import { ComparativeCard } from "../../_components/compartive-card"
 import { LineChart } from "../../_components/line-chart"
-import { Faq } from "../../_components/faq"
+import { Faq } from "../../_components/faq-item"
 
 const TomorrowPage = () => {
     return (

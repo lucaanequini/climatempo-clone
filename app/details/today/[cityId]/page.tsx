@@ -3,7 +3,7 @@ import { MiniNavbar } from "../../_components/mini-navbar"
 import { AlertCard } from "../../_components/alert-card"
 import { LineChart } from "../../_components/line-chart"
 import { RainForecast } from "../../_components/rain-forecast"
-import { Faq } from "../../_components/faq"
+import { Faq } from "../../_components/faq-item"
 
 
 const CityIdPage = () => {

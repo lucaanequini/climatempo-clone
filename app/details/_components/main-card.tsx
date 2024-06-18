@@ -12,9 +12,10 @@ import { Spinner } from "@/components/spinner"
 
 interface MainCardProps {
     day: number
+    weekDay?: string
 }
 
-export const MainCard = ({ day }: MainCardProps) => {
+export const MainCard = ({ day, weekDay }: MainCardProps) => {
     const pathname = usePathname()
 
     const cityId = pathname.split('/').pop()?.split('_').shift()
@@ -45,7 +46,7 @@ export const MainCard = ({ day }: MainCardProps) => {
                         <div className="flex flex-col gap-y-10">
                             <div className="flex items-center gap-x-2">
                                 <p className="font-semibold text-blue-600 text-xl">
-                                    Previsão para {day === 0 ? 'Hoje' : 'Amanhã'} {today.toLocaleDateString('pt-BR')} - {detailsCityName}
+                                    Previsão para {day === 0 ? 'Hoje' : weekDay} {today.toLocaleDateString('pt-BR')} - {detailsCityName}
                                 </p>
                                 <MapPin className="w-6 h-6 text-blue-600" />
                             </div>
