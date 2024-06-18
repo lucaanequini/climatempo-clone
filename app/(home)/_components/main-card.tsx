@@ -38,7 +38,7 @@ export const MainCard = () => {
                             width={100}
                             height={50}
                         />
-                        <p className="text-5xl font-bold">{(weatherData.current.temp - 273.15).toFixed(0)}°</p>
+                        <p className="text-5xl font-bold">{Math.floor(weatherData.current.temp - 273.15)}°</p>
                     </div>
                     <div className="flex flex-col gap-y-8">
                         <div className="flex gap-x-8">
@@ -48,7 +48,7 @@ export const MainCard = () => {
                             </div>
                             <div className="flex items-center text-gray-500">
                                 <Thermometer className="h-4 w-4" />
-                                <p>Sensação: {(weatherData.current.feels_like - 273.15).toFixed(0)}°</p>
+                                <p>Sensação: {Math.floor(weatherData.current.feels_like - 273.15)}°</p>
                             </div>
                         </div>
                         <div className="w-full flex justify-between text-sm sm:text-base">

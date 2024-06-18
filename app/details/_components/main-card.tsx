@@ -29,9 +29,9 @@ export const MainCard = ({ day }: MainCardProps) => {
         getCityNameWeatherData(cityId, state, country)
     }, [cityId, state, country])
 
-    if (searchWeatherData === null) {
+    if (searchWeatherData === null || isLoading) {
         return (
-            <div className="flex items-center justify-center">
+            <div className="w-full flex items-center justify-center">
                 <Spinner size='lg' />
             </div>
         )
@@ -42,7 +42,7 @@ export const MainCard = ({ day }: MainCardProps) => {
             {
                 cityName && searchWeatherData && !isLoading && (
                     <div className="w-full mt-10 md:mt-0 md:w-2/3 bg-white p-5 rounded-xl">
-                        <div className="flex flex-col gap-y-5">
+                        <div className="flex flex-col gap-y-10">
                             <div className="flex items-center gap-x-2">
                                 <p className="font-semibold text-blue-600 text-xl">
                                     Previsão para {day === 0 ? 'Hoje' : 'Amanhã'} {today.toLocaleDateString('pt-BR')} - {detailsCityName}
@@ -50,15 +50,15 @@ export const MainCard = ({ day }: MainCardProps) => {
                                 <MapPin className="w-6 h-6 text-blue-600" />
                             </div>
                             <div className="flex flex-col sm:flex-row gap-y-10 gap-x-10 lg:gap-x-40 items-center">
-                                <div className="flex flex-col gap-y-5">
+                                <div className="flex flex-col gap-y-12">
                                     <div className="flex flex-col sm:flex-row gap-10">
                                         <div className="flex items-center gap-x-2">
                                             <ArrowDown className="h-14 w-14 text-red-500" />
-                                            <p className="font-semibold text-5xl text-gray-600">{(searchWeatherData.daily[day].temp.min - 273.15).toFixed(0)}°</p>
+                                            <p className="font-semibold text-5xl text-gray-600">{Math.floor(searchWeatherData.daily[day].temp.min - 273.15)}°</p>
                                         </div>
                                         <div className="flex items-center gap-x-2">
                                             <ArrowUp className="h-14 w-14 text-green-500" />
-                                            <p className="font-semibold text-5xl text-gray-600">{(searchWeatherData.daily[day].temp.max - 273.15).toFixed(0)}°</p>
+                                            <p className="font-semibold text-5xl text-gray-600">{Math.floor(searchWeatherData.daily[day].temp.max - 273.15)}°</p>
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-y-3">
@@ -66,7 +66,7 @@ export const MainCard = ({ day }: MainCardProps) => {
                                             <p>Chuva</p>
                                             <div className="flex items-center gap-x-3">
                                                 <CloudRainWind className='h-4 w-4' />
-                                                <p>{searchWeatherData.daily[day].pop}%</p>
+                                                <p>{(searchWeatherData.daily[day].pop) * 100}%</p>
                                             </div>
                                         </div>
                                         <div className="flex justify-between">

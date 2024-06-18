@@ -36,7 +36,7 @@ export const LineChart = ({ day }: LineChartProps) => {
     const cityId = pathname.split('/').pop()?.split('-').shift()?.replace('%20', '-')
     const state = pathname.split('/').pop()?.split('_')[1]
     const country = pathname.split('/').pop()?.split('-').pop()
-    const { getCityNameWeatherData, searchWeatherData } = useVariables()
+    const { getCityNameWeatherData, searchWeatherData, isLoading } = useVariables()
 
     const currentHour = new Date().getHours();
     const dif = 24 - currentHour
@@ -65,7 +65,7 @@ export const LineChart = ({ day }: LineChartProps) => {
         return labels;
     }
 
-    if (searchWeatherData === null) {
+    if (searchWeatherData === null || isLoading) {
         return
     }
 

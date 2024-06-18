@@ -32,7 +32,7 @@ export const DailyCard = ({ image, min, max, pop, weekDay }: DailyCardProps) => 
                         <div className="h-5 w-2 bg-yellow-500 rounded-full" />
                         <p>CHUVA</p>
                     </div>
-                    <p className="text-gray-600 flex items-center gap-x-5"><CloudRainWind className="w-5 h-5" /> {pop}%</p>
+                    <p className="text-gray-600 flex items-center gap-x-5"><CloudRainWind className="w-5 h-5" /> {pop * 100}%</p>
                 </div>
             </div>
         </div>
