@@ -73,7 +73,7 @@ export const MainCard = ({ day }: MainCardProps) => {
                                             <p>Vento</p>
                                             <div className="flex items-center gap-x-3">
                                                 <Wind className='h-4 w-4' />
-                                                <p>{searchWeatherData.daily[day].wind_speed} km/h</p>
+                                                <p>{(searchWeatherData.daily[day].wind_speed * 3.6).toFixed(2)} km/h</p>
                                             </div>
                                         </div>
                                         <div className="flex justify-between">

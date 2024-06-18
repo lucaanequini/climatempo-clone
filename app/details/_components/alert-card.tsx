@@ -2,7 +2,7 @@
 
 import useVariables from "@/hooks/use-variables"
 
-export const Alert = () => {
+export const AlertCard = () => {
     const { searchWeatherData, isLoading } = useVariables()
 
     const date = (timestamp: number) => {
