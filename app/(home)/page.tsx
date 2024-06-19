@@ -1,6 +1,7 @@
 import { DailySection } from "./_components/daily-section"
 import { MainCard } from "./_components/main-card"
 import { NewsContainer } from "./_components/news-container"
+import { Faq } from "./_components/faq-item"
 
 export default function Teste() {
     return (
@@ -10,6 +11,7 @@ export default function Teste() {
                 <NewsContainer />
             </div>
             <DailySection />
+            <Faq />
         </div>
     )
 }
