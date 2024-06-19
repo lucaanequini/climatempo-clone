@@ -5,7 +5,7 @@ import { NewsContainer } from "./_components/news-container"
 export default function Teste() {
     return (
         <div>
-            <div className="mt-2 flex flex-col sm:flex-row justify-between gap-5">
+            <div className="mt-5 flex flex-col md:flex-row gap-5">
                 <MainCard />
                 <NewsContainer />
             </div>

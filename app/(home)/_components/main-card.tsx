@@ -28,7 +28,7 @@ export const MainCard = () => {
     }, [position])
 
     return (
-        <div className="bg-white h-[470px] w-full sm:w-[500px] flex flex-col items-center py-14 px-5 md:px-14 rounded-xl">
+        <div className="bg-white h-[470px] w-full md:w-[32.5%] flex flex-col items-center py-14 px-5 md:px-14 rounded-xl">
             {cityName && weatherData && !isLoading && (
                 <>
                     <p className="text-lg font-semibold text-center">Tempo agora em: {cityName.name}, {cityName.state}</p>
@@ -56,7 +56,7 @@ export const MainCard = () => {
                                 <div className="h-5 w-2 bg-green-300 rounded-xl" />
                                 <p>VENTO</p>
                             </div>
-                            <p>{(weatherData.current.wind_speed)} km/h</p>
+                            <p>{((weatherData.current.wind_speed) * 3.6).toFixed(2)} km/h</p>
                         </div>
                         <div className="w-full flex justify-between text-sm sm:text-base">
                             <div className="flex gap-x-2">

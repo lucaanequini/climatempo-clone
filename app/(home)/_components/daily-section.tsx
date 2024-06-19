@@ -12,7 +12,7 @@ export const DailySection = () => {
     const today = new Date()
 
     return (
-        <div className="grid gap-2 mt-5 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid flex-wrap gap-x-5 mt-5 sm:grid-cols-2 md:grid-cols-3">
             {cityName && weatherData && !isLoading && (
                 <>
                     <DailyCard

@@ -45,7 +45,7 @@ export const Navbar = () => {
                                 height={50}
                             />
                             <p className="text-xs sm:text-regular">
-                                {cityName.name}, {cityName.state} / {(weatherData.current.temp - 273.15).toFixed(0)}°
+                                {cityName.name}, {cityName.state} / {Math.floor(weatherData.current.temp - 273.15)}°
                             </p>
                         </div>
                     )}
