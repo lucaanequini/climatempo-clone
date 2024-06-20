@@ -4,10 +4,8 @@ import Link from "next/link"
 
 import { usePathname } from "next/navigation"
 
-import { useState } from "react"
 
-
-type TabValue = 'today' | 'tomorrow' | 'weekend' | 'twoWeeks';
+type TabValue = 'today' | 'tomorrow' | 'weekend' | 'now';
 
 interface TabProps {
     value: TabValue;
@@ -27,10 +25,10 @@ export const MiniNavbar = () => {
     const id = city + '_' + state + '_' + country
 
     const tabs: TabProps[] = [
+        { value: 'now', href: `/details/now/${id}`, label: 'Agora' },
         { value: 'today', href: `/details/today/${id}`, label: 'Hoje' },
         { value: 'tomorrow', href: `/details/tomorrow/${id}`, label: 'Amanhã' },
         { value: 'weekend', href: `/details/weekend/${id}`, label: 'Fim de Semana' },
-        { value: 'twoWeeks', href: `/details/15/${id}`, label: '15 dias' },
     ];
     return (
         <div className="bg-white my-5 rounded-xl">

@@ -16,10 +16,13 @@ import { Button } from "@/components/ui/button"
 
 export const NewsContainer = () => {
     const [news, setNews] = useState<News[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const getNews = async () => {
+        setIsLoading(true)
         const news = await newsService.getNews()
         setNews(news)
+        setIsLoading(false)
     }
 
     const onRedirect = (url: string) => {
@@ -31,9 +34,13 @@ export const NewsContainer = () => {
     }, [])
 
 
+    if (news === null || isLoading) {
+        return
+    }
+
     return (
         <>
-            {news && (
+            {news && !isLoading && (
                 <div className="bg-white md:w-2/3 rounded-xl">
                     <Carousel
                         plugins={[Autoplay({

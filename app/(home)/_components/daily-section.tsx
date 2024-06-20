@@ -4,12 +4,22 @@ import { DailyCard } from "./daily-card"
 
 import useVariables from "@/hooks/use-variables"
 
+import { Spinner } from "@/components/spinner"
+
 export const DailySection = () => {
     const { weatherData, cityName, isLoading } = useVariables()
 
 
     const weekDays = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo', 'Segunda']
     const today = new Date()
+
+    if (weatherData === null || isLoading) {
+        return (
+            <div className="w-full flex justify-center">
+                <Spinner size='lg' />
+            </div>
+        )
+    }
 
     return (
         <div className="grid flex-wrap gap-x-5 mt-5 sm:grid-cols-2 md:grid-cols-3">

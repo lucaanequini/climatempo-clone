@@ -7,7 +7,15 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 
+import useVariables from "@/hooks/use-variables"
+
 export const Faq = () => {
+    const { weatherData, isLoading } = useVariables()
+
+    if (weatherData === null || isLoading) {
+        return
+    }
+
     return (
         <div className="flex flex-col gap-y-5 mt-5">
             <Accordion type="single" collapsible className="p-5 md:w-2/3 bg-white rounded-xl">
@@ -35,6 +43,16 @@ export const Faq = () => {
                         <p>O tempo é o estado atual da atmosfera de um local, que pode mudar de um dia para o outro, ou até mesmo, de uma hora para outra. Por exemplo, quando dizemos “Hoje está chovendo em São Paulo” ou “Amanhã a previsão é de sol e temperaturas amenas” estamos nos referindo ao tempo, que varia de horas, dias a semanas.</p>
                         <br />
                         <p>Já o clima representa a média das variações do tempo por um período mais longo de uma determinada região, tratando-se de meses, estações do ano e anos. Por exemplo, quando dizemos “O inverno no sudeste do Brasil é seco e o verão chuvoso” ou então “A previsão climática é de que a temperatura do ar fique acima da média no sul em agosto”, estamos nos referindo a clima.</p>
+                    </AccordionContent>
+                </AccordionItem>
+            </Accordion>
+            <Accordion type="single" collapsible className="p-5 md:w-2/3 bg-white rounded-xl">
+                <AccordionItem value='item-1'>
+                    <AccordionTrigger>
+                        O que a meteorologia estuda?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                        <p>A <span className="font-semibold text-blue-600">meteorologia</span> é uma área da ciência que estuda o comportamento da atmosfera, integrando o conhecimento de diversas áreas. Por ser multidisciplinar, envolve disciplinas como física, matemática, ciência da computação, estatística e química.</p>
                     </AccordionContent>
                 </AccordionItem>
 

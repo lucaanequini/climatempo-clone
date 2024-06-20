@@ -13,7 +13,7 @@ const TomorrowPage = () => {
                 <ComparativeCard />
             </div>
             <LineChart day={1} />
-            <Faq day={1} />
+            <Faq day={1} weekDay="amanhã" />
         </div>
     )
 }

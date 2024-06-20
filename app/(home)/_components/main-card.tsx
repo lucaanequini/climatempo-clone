@@ -9,13 +9,14 @@ import { Thermometer, Cloud } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import { useRouter } from "next/navigation"
 import { useLocation } from "@/hooks/use-location"
 
 export const MainCard = () => {
     const { weatherData, cityName, isLoading, getLocationWeatherData } = useVariables()
+    const [detailsPage, setDetailsPage] = useState(false)
     const router = useRouter()
     const { position } = useLocation()
 
@@ -27,10 +28,15 @@ export const MainCard = () => {
         getLocationWeatherData(position)
     }, [position])
 
+
+    if (weatherData === null || isLoading) {
+        return
+    }
+
     return (
-        <div className="bg-white h-[470px] w-full md:w-[32.5%] flex flex-col items-center py-14 px-5 md:px-14 rounded-xl">
+        <>
             {cityName && weatherData && !isLoading && (
-                <>
+                <div className="bg-white h-[470px] w-full md:w-[32.5%] flex flex-col items-center py-14 px-5 md:px-14 rounded-xl">
                     <p className="text-lg font-semibold text-center">Tempo agora em: {cityName.name}, {cityName.state}</p>
                     <div className="flex items-center">
                         <Image src={`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@4x.png`}
@@ -74,21 +80,8 @@ export const MainCard = () => {
                             Mais detalhes
                         </Button>
                     </div>
-                </>
-            )}
-            {isLoading && (
-                <div className="flex flex-col gap-y-8 items-center">
-                    <p className="text-lg font-semibold text-center">Tempo agora em:<Skeleton className="w-60 h-4 bg-black" /></p>
-                    <div className="flex items-center gap-x-2">
-                        <Skeleton className="w-14 h-14 rounded-full bg-black" />
-                        <Skeleton className="w-14 h-5 bg-black" />
-                    </div>
-                    <div className="flex justify-between w-full">
-                        <Skeleton className="w-14 h-5 bg-black" />
-                        <Skeleton className="w-14 h-5 bg-black" />
-                    </div>
                 </div>
             )}
-        </div>
+        </>
     )
 }
