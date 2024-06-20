@@ -22,7 +22,7 @@ export const DailySection = () => {
     }
 
     return (
-        <div className="grid flex-wrap gap-x-5 mt-5 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-5 mt-5 sm:grid-cols-2 md:grid-cols-3">
             {cityName && weatherData && !isLoading && (
                 <>
                     <DailyCard

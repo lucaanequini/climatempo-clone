@@ -43,14 +43,14 @@ export const MainCard = ({ day, weekDay }: MainCardProps) => {
             {
                 cityName && searchWeatherData && !isLoading && (
                     <div className="w-full mt-10 md:mt-0 md:w-2/3 bg-white p-5 rounded-xl">
-                        <div className="flex flex-col gap-y-10">
+                        <div className="h-full flex flex-col gap-y-10">
                             <div className="flex items-center gap-x-2">
                                 <p className="font-semibold text-blue-600 text-xl">
                                     Previsão para {day === 0 ? 'Hoje' : weekDay} {today.toLocaleDateString('pt-BR')} - {detailsCityName}
                                 </p>
                                 <MapPin className="w-6 h-6 text-blue-600" />
                             </div>
-                            <div className="flex flex-col sm:flex-row gap-y-10 gap-x-10 lg:gap-x-40 items-center">
+                            <div className="flex flex-col lg:flex-row gap-y-10 gap-x-10 xl:gap-x-20 items-center lg:justify-center h-full">
                                 <div className="flex flex-col gap-y-12">
                                     <div className="flex flex-col sm:flex-row gap-10">
                                         <div className="flex items-center gap-x-2">

@@ -9,17 +9,21 @@ import { useEffect } from "react"
 
 import { usePathname } from "next/navigation"
 
+import Link from "next/link"
+
 export const NowCard = () => {
     const pathname = usePathname()
 
-    const cityId = pathname.split('/').pop()?.split('_').shift()
+    const city = pathname.split('/').pop()?.split('_').shift()
     const state = pathname.split('/').pop()?.split('_')[1]
     const country = pathname.split('/').pop()?.split('_').pop()
+    const id = city + '_' + state + '_' + country
+
     const { isLoading, searchWeatherData, detailsCityName, getCityNameWeatherData } = useVariables()
 
     useEffect(() => {
-        getCityNameWeatherData(cityId, state, country)
-    }, [cityId, state, country])
+        getCityNameWeatherData(city, state, country)
+    }, [city, state, country])
 
     if (searchWeatherData === null || isLoading) {
         return
@@ -28,7 +32,7 @@ export const NowCard = () => {
     return (
         <>
             {detailsCityName && searchWeatherData && !isLoading && (
-                <div className="bg-white h-[470px] w-full md:w-[32.5%] flex flex-col items-center py-14 px-5 md:px-14 rounded-xl">
+                <div className="bg-white w-full md:w-[32.5%] flex flex-col items-center justify-between py-14 px-5 md:px-14 rounded-xl">
                     <p className="text-lg font-semibold text-center">Tempo agora em: {detailsCityName}</p>
                     <div className="flex items-center">
                         <Image src={`http://openweathermap.org/img/wn/${searchWeatherData.current.weather[0].icon}@4x.png`}
@@ -71,10 +75,12 @@ export const NowCard = () => {
                             <p>{(searchWeatherData.current.pressure)}hPa</p>
                         </div>
                         <div className="w-full flex justify-center text-sm sm:text-base">
-                            <div className="flex items-center gap-x-2">
-                                <p className="font-semibold text-blue-600">Previsão para Hoje</p>
-                                <ChevronRight className="h-4 w-4 text-blue-600" />
-                            </div>
+                            <Link href={`/details/today/${id}`} >
+                                <div className="flex items-center gap-x-2 hover:border-b border-blue-600">
+                                    <p className="font-semibold text-blue-600">Previsão para Hoje</p>
+                                    <ChevronRight className="h-4 w-4 text-blue-600" />
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

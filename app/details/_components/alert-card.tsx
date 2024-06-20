@@ -20,7 +20,7 @@ export const AlertCard = () => {
                 <div className="md:w-[32%] p-5 rounded-xl bg-red-100 ">
                     <p className="text-red-500 font-semibold text-xl">Alertas Climáticos</p>
                     {searchWeatherData.alerts ? (
-                        searchWeatherData.alerts.map((alert: any, index: number) => (
+                        searchWeatherData.alerts.slice(0, 1).map((alert: any, index: number) => (
                             <div key={index} className="flex flex-col gap-y-5">
                                 <p className="font-semibold">{alert.event}</p>
                                 <p>{alert.description}</p>

@@ -14,7 +14,7 @@ export const ComparativeCard = () => {
     return (
         <>
             {searchWeatherData && (
-                <div className="md:w-[32%] p-5 rounded-xl bg-white ">
+                <div className="md:w-[32%] py-5 px-3 rounded-xl bg-white">
                     <p className="text-blue-600 font-semibold text-xl">Comparativo</p>
                     <div className="flex flex-col gap-y-5">
                         <table className="table-auto md:text-sm lg:text-base">

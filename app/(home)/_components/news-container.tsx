@@ -48,7 +48,7 @@ export const NewsContainer = () => {
                         })]}
                     >
                         <CarouselContent>
-                            {news.slice(0, 3).map((item, index) => (
+                            {news.slice(0, 5).map((item, index) => (
                                 <CarouselItem key={index}>
                                     <div className="flex flex-col sm:flex-row">
                                         <div className="w-full h-full max-h-[470px]">

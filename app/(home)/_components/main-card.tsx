@@ -36,7 +36,7 @@ export const MainCard = () => {
     return (
         <>
             {cityName && weatherData && !isLoading && (
-                <div className="bg-white h-[470px] w-full md:w-[32.5%] flex flex-col items-center py-14 px-5 md:px-14 rounded-xl">
+                <div className="bg-white h-[470px] w-full md:w-1/3 flex flex-col items-center p-7 md:px-14 rounded-xl">
                     <p className="text-lg font-semibold text-center">Tempo agora em: {cityName.name}, {cityName.state}</p>
                     <div className="flex items-center">
                         <Image src={`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@4x.png`}
