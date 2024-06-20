@@ -32,7 +32,7 @@ export const NowCard = () => {
     return (
         <>
             {detailsCityName && searchWeatherData && !isLoading && (
-                <div className="bg-white w-full md:w-[32.5%] flex flex-col items-center justify-between py-14 px-5 md:px-14 rounded-xl">
+                <div className="bg-white w-full md:w-1/3 flex flex-col items-center justify-between py-14 px-5 lg:px-14 rounded-xl">
                     <p className="text-lg font-semibold text-center">Tempo agora em: {detailsCityName}</p>
                     <div className="flex items-center">
                         <Image src={`http://openweathermap.org/img/wn/${searchWeatherData.current.weather[0].icon}@4x.png`}

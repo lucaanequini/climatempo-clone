@@ -4,9 +4,9 @@ import { AlertCard } from "../../_components/alert-card"
 
 const NowPage = () => {
     return (
-        <div className="h-[68vh]">
+        <div className="md:h-[68vh]">
             <MiniNavbar />
-            <div className="flex gap-x-10 justify-center">
+            <div className="flex flex-col md:flex-row gap-x-10 justify-center">
                 <NowCard />
                 <AlertCard />
             </div>
