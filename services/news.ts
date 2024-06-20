@@ -3,21 +3,23 @@ import axios from "axios"
 export type News = {
     title: string
     description: string
-    url: string
+    image_url: string
+    article_id: string
+    link: string
 }
 
-const API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY
+const API_KEY = process.env.NEXT_PUBLIC_WORLDNEWSAPI_KEY
 
 const newsService = {
     getNews: async () => {
-        try {
+        try{
             const response = await axios.get(
-                `https://newsapi.org/v2/top-headlines?country=br&category=business&apiKey=${API_KEY}`
+                `https://newsdata.io/api/1/latest?country=br&q=clima&apikey=${API_KEY}`
             )
-            console.log(response.data.articles)
-            return response.data.articles
+            console.log(response.data.results)
+            return response.data.results
         } catch (error) {
-            console.error("Erro ao buscar notícias:", error)
+            console.error('Erro ao buscar notícias:', error)
         }
     }
 }

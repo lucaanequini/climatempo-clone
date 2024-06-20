@@ -6,6 +6,8 @@ import { Faq } from "../../_components/faq-item";
 
 import { useEffect, useState } from "react";
 
+import { ComparativeCard } from "../../_components/compartive-card";
+
 const WeekendPage = () => {
     const today = new Date()
     const todayWeekday = today.getDay()
@@ -25,7 +27,10 @@ const WeekendPage = () => {
         <div>
             <MiniNavbar />
             <div className="flex flex-col gap-y-5">
-                <MainCard day={missingDays} weekDay="Sábado" />
+                <div className="flex flex-col md:flex-row gap-5">
+                    <MainCard day={missingDays} weekDay="Sábado" />
+                    <ComparativeCard day={missingDays} weekend />
+                </div>
                 <MainCard day={missingDays + 1} weekDay="Domingo" />
             </div>
             <Faq day={missingDays} weekDay="o fim de semana" />

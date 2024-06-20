@@ -34,8 +34,8 @@ export const Navbar = () => {
                     <SearchItem />
                 </div>
             </div>
-            <div className="w-full bg-blue-900 h-[100px] flex items-center">
-                <div className="mx-2 lg:mx-40 xl:mx-60 2xl:mx-96 flex w-full justify-between items-center text-white">
+            <div className="w-full bg-blue-900 py-2 flex items-center">
+                <div className="mx-2 lg:mx-16 xl:mx-48 2xl:mx-80 flex w-full justify-between items-center text-white">
                     <p className="text-xs sm:text-regular">Clima e Previsão do Tempo</p>
                     {cityName && weatherData && !isLoading && (
                         <div className="flex items-center">
@@ -45,7 +45,7 @@ export const Navbar = () => {
                                 height={50}
                             />
                             <p className="text-xs sm:text-regular">
-                                {cityName.name}, {cityName.state} / {(weatherData.current.temp - 273.15).toFixed(0)}°
+                                {cityName.name}, {cityName.state} / {Math.floor(weatherData.current.temp - 273.15)}°
                             </p>
                         </div>
                     )}

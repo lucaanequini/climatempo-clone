@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 
 import { WeatherContextProvider } from "@/contexts/WeatherContext";
+import { Footer } from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <WeatherContextProvider>
           <Navbar />
           {children}
+          <Footer />
         </WeatherContextProvider>
       </body>
     </html>

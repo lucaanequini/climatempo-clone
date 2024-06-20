@@ -10,10 +10,10 @@ const TomorrowPage = () => {
             <MiniNavbar />
             <div className="flex flex-col md:flex-row justify-between gap-y-5">
                 <MainCard day={1} />
-                <ComparativeCard />
+                <ComparativeCard day={0} />
             </div>
             <LineChart day={1} />
-            <Faq day={1} />
+            <Faq day={1} weekDay="amanhã" />
         </div>
     )
 }
