@@ -6,7 +6,7 @@ const NowPage = () => {
     return (
         <div className="md:h-[68vh]">
             <MiniNavbar />
-            <div className="flex flex-col md:flex-row gap-x-10 justify-center">
+            <div className="flex flex-col md:flex-row gap-y-5 gap-x-10 justify-center">
                 <NowCard />
                 <AlertCard />
             </div>
