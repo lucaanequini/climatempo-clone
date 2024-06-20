@@ -6,7 +6,7 @@ const geolocationService = {
     getCityName: async (lat: number, lon: number) => {
         try {
             const response = await axios.get(
-                `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+                `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${API_KEY}`
             );
             return response.data[0];
         } catch (error) {
@@ -17,7 +17,7 @@ const geolocationService = {
     getLonAndLat: async (city: string | undefined, state: string | undefined, country: string | undefined) => {
         try {
             const response = await axios.get(
-                `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=0&appid=${API_KEY}`
+                `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=0&appid=${API_KEY}`
             );
             console.log(response.data[0])
             return response.data[0];
