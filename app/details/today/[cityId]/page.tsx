@@ -8,7 +8,7 @@ import { Faq } from "../../_components/faq-item"
 
 const CityIdPage = () => {
     return (
-        <div className="h-screen">
+        <div>
             <MiniNavbar />
             <div className="flex flex-col md:flex-row justify-between gap-y-5">
                 <MainCard day={0} />
