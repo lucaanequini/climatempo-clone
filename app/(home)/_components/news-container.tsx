@@ -13,10 +13,13 @@ import Autoplay from "embla-carousel-autoplay"
 
 import { Button } from "@/components/ui/button"
 
+import useVariables from "@/hooks/use-variables"
+
 
 export const NewsContainer = () => {
     const [news, setNews] = useState<News[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const { weatherData } = useVariables()
 
     const getNews = async () => {
         setIsLoading(true)
@@ -34,7 +37,7 @@ export const NewsContainer = () => {
     }, [])
 
 
-    if (news === null || isLoading) {
+    if (weatherData === null || isLoading) {
         return
     }
 
