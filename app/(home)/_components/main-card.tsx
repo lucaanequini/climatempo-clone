@@ -1,6 +1,5 @@
 'use client'
 
-import { Skeleton } from "@/components/ui/skeleton"
 import useVariables from "@/hooks/use-variables"
 
 import Image from "next/image"
@@ -12,6 +11,7 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 
 import { useRouter } from "next/navigation"
+
 import { useLocation } from "@/hooks/use-location"
 
 export const MainCard = () => {

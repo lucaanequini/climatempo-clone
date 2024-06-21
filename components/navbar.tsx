@@ -27,8 +27,8 @@ export const Navbar = () => {
             <div className="w-full bg-blue-600 py-10">
                 <div className='mx-2 lg:mx-16 xl:mx-48 2xl:mx-80 flex justify-between items-center'>
                     <Link href='/'>
-                        <div className="w-32 lg:w-40">
-                            <Image src='/logo.svg' alt='logo' layout='responsive' width={150} height={400} />
+                        <div className="w-40 lg:w-72">
+                            <Image src='/weather-logo.png' alt='logo' layout='responsive' width={150} height={400} />
                         </div>
                     </Link>
                     <SearchItem />

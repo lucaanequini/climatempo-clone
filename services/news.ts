@@ -14,7 +14,7 @@ const newsService = {
     getNews: async () => {
         try{
             const response = await axios.get(
-                `https://newsdata.io/api/1/latest?country=br&q=clima&apikey=${API_KEY}`
+                `https://newsdata.io/api/1/latest?country=br&q=temperatura&apikey=${API_KEY}`
             )
             console.log(response.data.results)
             return response.data.results

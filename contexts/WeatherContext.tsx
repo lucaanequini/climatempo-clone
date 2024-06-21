@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useState, useEffect } from "react"
+import React, { createContext, useState } from "react"
 
 import weatherService from "@/services/weather"
 import geolocationService from "@/services/geolocation"

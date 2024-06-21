@@ -33,7 +33,7 @@ export const MainCard = ({ day, weekDay }: MainCardProps) => {
     if (searchWeatherData === null || isLoading) {
         return (
             <div className="w-full flex items-center justify-center">
-                <Spinner size='lg' />
+                <Spinner />
             </div>
         )
     }
