@@ -16,10 +16,9 @@ const newsService = {
             const response = await axios.get(
                 `https://newsdata.io/api/1/latest?country=br&q=temperatura&apikey=${API_KEY}`
             )
-            console.log(response.data.results)
             return response.data.results
         } catch (error) {
-            console.error('Erro ao buscar notícias:', error)
+            throw new Error('Erro ao buscar notícias')
         }
     }
 }

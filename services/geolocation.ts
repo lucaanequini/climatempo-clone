@@ -19,11 +19,9 @@ const geolocationService = {
             const response = await axios.get(
                 `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=0&appid=${API_KEY}`
             );
-            console.log(response.data[0])
             return response.data[0];
         } catch (error) {
-            console.error('Erro ao obter informações:', error);
-            throw error;
+            throw new Error('Erro ao obter informações')
         }
     },
     getSuggestions: async (searchTerm: string) => {
@@ -33,7 +31,7 @@ const geolocationService = {
             );
             return(response.data)
         } catch (error) {
-            console.error("Erro ao buscar sugestões:", error);
+            throw new Error('Erro ao buscar sugestões')
         }
     }
 };

@@ -52,7 +52,6 @@ export const LineChart = ({ day }: LineChartProps) => {
         if (day === 1) {
             setStartHour(dif)
             setEndHour(dif + 20)
-            console.log(startHour, endHour)
         }
     }, [])
 

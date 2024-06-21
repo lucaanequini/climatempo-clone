@@ -11,8 +11,7 @@ const weatherService = {
             );
             return(response.data)
         } catch (error) {
-            console.error('Erro ao obter dados do clima:', error);
-            throw error;
+            throw new Error('Erro ao obter dados do clima!');
         }
     }
 }

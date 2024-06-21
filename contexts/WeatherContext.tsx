@@ -58,12 +58,10 @@ export const WeatherContextProvider = ({ children }: { children: React.ReactNode
                 setSearchWeatherData(cityWeatherData);
                 setDetailsCityName(response.name)
                 setIsLoading(false)
-                console.log(cityWeatherData)
                 return cityWeatherData;
             }
         } catch (error) {
-            console.error('Erro ao obter dados do clima da cidade:', error);
-            throw error;
+            throw new Error('Erro ao obter dados do clima da cidade')
         }
     }
 
